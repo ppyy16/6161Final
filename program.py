@@ -17,7 +17,7 @@ from PIL import Image
 
      
 
-
+print("Welcome to photo mini-market")
 image = raw_input("What image would you like to manipulate? \n")
 
 
