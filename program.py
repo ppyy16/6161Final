@@ -54,7 +54,7 @@ elif value == 'Voronoi':
 	openedimage = Image.open(image)
 	points = raw_input("Number of random points? ")
 	cells = raw_input("Number of cells? ")
-	outputname = raw_input("Output image name (no format)? \n")
+	outputname = raw_input("Output image name? \n")
 
 	pprint("Loading...")
 	nrandompixels(openedimage, points, cells, outputname)
