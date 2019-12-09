@@ -21,7 +21,7 @@ def mainer(image):
 	
 
 	SeamCarver = SeamCarving()
-	weight = SeamCarver.run(image_data)
+	weight = SeamCarver.run(image_info)
 	print("weight: " + str(weight))
 	print("seam: " + str(SeamCarver.getSeam()))
 
