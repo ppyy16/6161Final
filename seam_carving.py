@@ -4,21 +4,21 @@
 
 import math
 import numpy
+
+
+
 class SeamCarving:
     def __init__(self):
         self.energyList = []
         return
 
   
-    # @return the seam's weight
     def run(self, image):
-
+	#Image[r][c] = pixel
         rows = len(image[0])-1
         cols = len(image)-1
 
-
         cost = numpy.zeros((rows+1,cols+1)).astype(float)
-
         
         for i in range(0,rows+1):
             for j in range(0,cols+1):
@@ -42,13 +42,7 @@ class SeamCarving:
     
 
 
-    # Get the seam, in order from top to bottom, where the top-left corner of the
-    # image is denoted (0,0).
-    # 
-    # Since the y-coordinate (row) is determined by the order, only return the x-coordinate
-    # 
-    # @return the ordered list of x-coordinates (column number) of each pixel in the seam
-    #         as an array
+    # Image starts from top to bottom , (0,0) is the top left of the image
     def getSeam(self):
         
         rows = len(self.energyList)-1
@@ -80,6 +74,7 @@ class SeamCarving:
         return result
          
 
+	#Calculating pixel energy, has various edge cases
 
     def energy(self,image,col,row):
         rowBound  = len(image[0])-1
