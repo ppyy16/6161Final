@@ -5,7 +5,7 @@ import math
 
 
 
-def nrandompixels(image, points, numcells):
+def nrandompixels(image, points, numcells, outputname):
 	width, height = image.size
 	
 	#new image canvas
@@ -29,13 +29,13 @@ def nrandompixels(image, points, numcells):
 		ny.append(random.randrange(imgy))
 		# print(nx[count], ny[count])
 
-	voronoi(nx, ny, points, newimage, loaded, image, int(numcells))
+	voronoi(nx, ny, points, newimage, loaded, image, int(numcells), outputname)
 
 	#find the pixel color at given point
 	# img[x,y] = value
 
 
-def voronoi(nx,ny, points, canvas, loaded, image, num_cells):
+def voronoi(nx,ny, points, canvas, loaded, image, num_cells,outputname):
 	iterator = 0
 	xlen = len(nx)
 	ylen = len(ny)
@@ -79,12 +79,12 @@ def voronoi(nx,ny, points, canvas, loaded, image, num_cells):
 
 	for y in range(imgy):
 			for x in range(imgx):
-				dmin = math.hypot(imgx-1, imgy-1)
 				j = -1
+				mymin = math.hypot(imgx-1, imgy-1)
 				for i in range(num_cells):
-					d = math.hypot(nx[i]-x, ny[i]-y)
-					if d < dmin:
-						dmin = d
+					down = math.hypot(nx[i]-x, ny[i]-y)
+					if down < mymin:
+						mymin = down
 						j = i
 				# print(x,y)
 				putpixel((x, y), (nr[j], ng[j], nb[j]))
@@ -94,7 +94,7 @@ def voronoi(nx,ny, points, canvas, loaded, image, num_cells):
 
 
 
-	canvas.save("rollerballedited.png", "PNG")
+	canvas.save(outputname, "PNG")
 	canvas.show()
 
 
